@@ -1,0 +1,87 @@
+curl --location -g --request POST 'localhost:8090/api/v1/users/login' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "userName": "UsernameTh1",
+    "password": "password12345"  
+}'
+
+
+
+curl --location -g --request PATCH 'localhost:8090/api/v1/users/updateMyPassword' \
+--header 'Content-Type: application/json' \
+--oauth2-bearer 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxOWY2NWVlOTc2ZGI5NGIxMDcwNDgzOSIsImlhdCI6MTYzODgwOTI3OCwiZXhwIjoxNjQ2NTg1Mjc4fQ.B-WtdvC0bzqKSfmozLXCZX321RC1siiYxZTdqAB13xw' \
+--data-raw '{
+    "passwordCurrent": "password12345",
+    "passwordNew": "newpassword12",
+    "passwordConfirm": "newpassword12"
+}'
+
+curl --location -g --request POST 'localhost:8090/api/v1/homes' \
+--header 'Content-Type: application/json' \
+--oauth2-bearer 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxOWY2NWVlOTc2ZGI5NGIxMDcwNDgzOSIsImlhdCI6MTYzODgwOTI3OCwiZXhwIjoxNjQ2NTg1Mjc4fQ.B-WtdvC0bzqKSfmozLXCZX321RC1siiYxZTdqAB13xw' \
+--data-raw '{
+    "homeType": "Terraced house",
+    "location": {"coordinates":[6.4631352550978605, 3.5461274228516153],"address":"VGC Welcome Center"},
+    "description":"a well designed and furnished home9",
+    "price":{"amount":4000,"currency":"Dollar"},
+    "waterSource":"Government Water",
+    "roomsEnsuite": true,
+    "numOfBathrooms": 3,
+    "numOfToilets": 3,
+    "buildingType": "NEW"
+}'
+
+curl --location -g --request PATCH 'localhost:8090/api/v1/homes' \
+--header 'Content-Type: application/json' \
+--oauth2-bearer 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxOWY2NWVlOTc2ZGI5NGIxMDcwNDgzOSIsImlhdCI6MTYzODgwOTI3OCwiZXhwIjoxNjQ2NTg1Mjc4fQ.B-WtdvC0bzqKSfmozLXCZX321RC1siiYxZTdqAB13xw' \
+--data-raw '{
+    "homeType": "Terraced house",
+    "location": {"coordinates":[6.4631352550978605, 3.5461274228516153],"address":"VGC Welcome Center"},
+    "description":"a well designed and furnished home9",
+    "price":{"amount":4000,"currency":"Dollar"},
+    "waterSource":"Government Water",
+    "roomsEnsuite": true,
+    "numOfBathrooms": 3,
+    "numOfToilets": 3,
+    "buildingType": "NEW"
+}'
+
+
+curl --location -g --request POST 'localhost:8090/api/v1/subscriptionPlans' \
+--header 'Content-Type: application/json' \
+--oauth2-bearer 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxOWY2NWVlOTc2ZGI5NGIxMDcwNDgzOSIsImlhdCI6MTYzODIwMjY3OCwiZXhwIjoxNjQ1OTc4Njc4fQ.329P3sd5mWgFqFIShoTN_d8U70H7wchjAITHyoIBrUI' \
+--data-raw '{
+    "planType": "Free",
+    "benefits": [{"benefitType": "Email", "benefitQuantity": 5},{"benefitType": "Uploads", "benefitQuantity": 10} ],
+    "price": {"amount": 2000, "currency": "Naira"}
+}'
+
+//CREATE AGREEMENT
+curl --location -g --request POST 'localhost:8090/api/v1/agreements' \
+--header 'Content-Type: application/json' \
+--oauth2-bearer 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxN2ZjOTc2OTNjMWQ1MTc0ODM1NDU0YiIsImlhdCI6MTYzNTc2NDYwMiwiZXhwIjoxNjQzNTQwNjAyfQ.E6DL59qKWJ6YdjW1JNEmzx1ChOVxtfesbb-VjdvGKak' \
+--data-raw '{
+    "price":{
+        "amount": 150000,
+        "currency":"Dollar",
+        "duration": 24
+    },
+    "offerDetails": {
+        "tenantId":"617aceb130d9df1380b0d721",
+        "homeId": "6184104e4537cd296898fdba"
+    },
+    "startDate":2021-12-20,
+    "endDate": 2022-12-20,
+    "addendum": [
+        {
+            "startDate":2021-12-20,
+            "endDate":2022-12-20
+        }
+        
+    ]    
+}'
+
+//GET AGREEMENT
+curl --location -g --request GET 'localhost:8090/api/v1/agreements' \
+--header 'Content-Type: application/json' \
+--oauth2-bearer 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxN2ZjOTc2OTNjMWQ1MTc0ODM1NDU0YiIsImlhdCI6MTYzNTc2NDYwMiwiZXhwIjoxNjQzNTQwNjAyfQ.E6DL59qKWJ6YdjW1JNEmzx1ChOVxtfesbb-VjdvGKak' \
