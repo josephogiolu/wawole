@@ -9,10 +9,10 @@ const requestTransactionSchema = new mongoose.Schema(
       required: true,
     },
     requestId: {
-        type: 'ObjectId',
-        ref: 'Request',
-        required: true,
-      },
+      type: 'ObjectId',
+      ref: 'Request',
+      required: true,
+    },
     fromStatus: {
       type: String,
       enum: [
@@ -28,20 +28,20 @@ const requestTransactionSchema = new mongoose.Schema(
       required: true,
     },
     toStatus: {
-        type: String,
-        enum: [
-          'Assigned',
-          'Processing',
-          'Rejected',
-          'Confirmed',
-          'Resolved',
-          'Withdrawn',
-          'Closed',
-        ],
-        required: true,
-      },
-    feedback:{
-        type: String,
+      type: String,
+      enum: [
+        'Assigned',
+        'Processing',
+        'Rejected',
+        'Confirmed',
+        'Resolved',
+        'Withdrawn',
+        'Closed',
+      ],
+      required: true,
+    },
+    feedback: {
+      type: String,
     },
   },
 
@@ -49,8 +49,11 @@ const requestTransactionSchema = new mongoose.Schema(
     timestamps: {
       createdAt: 'requestTransactionCreatedAt',
       updatedAt: 'requestTransactionModifiedAt',
-    },  
+    },
   }
 );
-const RequestTransaction = mongoose.model('RequestTransaction', requestTransactionSchema);
+const RequestTransaction = mongoose.model(
+  'RequestTransaction',
+  requestTransactionSchema
+);
 module.exports = RequestTransaction;

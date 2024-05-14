@@ -1,4 +1,3 @@
-const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 
 process.on('uncaughtException', (err) => {
@@ -9,6 +8,7 @@ process.on('uncaughtException', (err) => {
 });
 
 dotenv.config({ path: './config.env' });
+const { default: mongoose } = require('mongoose');
 const app = require('./app');
 
 const DB = process.env.DATABASE.replace(
@@ -16,16 +16,13 @@ const DB = process.env.DATABASE.replace(
   process.env.DATABASE_PASSWORD
 );
 
-mongoose
-  .connect(DB, {
-    useNewUrlParser: true,
-    useCreateIndex: true,
-    useFindAndModify: false,
-    useUnifiedTopology: true,
-  })
-  .then(() => {
-    console.log('DB connection successful! 🙂 ');
-  });
+const options = {
+  dbName: 'Wawole', 
+};
+
+mongoose.connect(DB, options).then(() => {
+  console.log('DB connection successful! 🙂 ');
+});
 
 //Start servers
 const port = process.env.PORT || 3000;
