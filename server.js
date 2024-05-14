@@ -17,7 +17,7 @@ const DB = process.env.DATABASE.replace(
 );
 
 const options = {
-  dbName: 'Wawole', 
+  dbName: 'Wawole',
 };
 
 mongoose.connect(DB, options).then(() => {
