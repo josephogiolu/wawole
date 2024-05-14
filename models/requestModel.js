@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
-const  {validationDetailsSchema}  = require('./validationDetailsModel');
-const  {homelistingDetailsSchema}  = require('./homelistingDetailsModel');
-const  {maintenanceDetailsSchema}  = require('./maintenanceDetailsModel');
-const  {homeTourSchema}  = require('./homeTourModel');
+const { validationDetailsSchema } = require('./validationDetailsModel');
+const { homelistingDetailsSchema } = require('./homelistingDetailsModel');
+const { maintenanceDetailsSchema } = require('./maintenanceDetailsModel');
+const { homeTourSchema } = require('./homeTourModel');
 
 const validator = require('validator');
 
@@ -23,16 +23,16 @@ const requestSchema = new mongoose.Schema(
     //   refPath: 'requestType',
     //    required: true,
     // },
-    validationDetails:{
+    validationDetails: {
       type: validationDetailsSchema,
     },
-    homeTourDetails:{
+    homeTourDetails: {
       type: homeTourSchema,
     },
-    homelistingDetails:{
+    homelistingDetails: {
       type: homelistingDetailsSchema,
     },
-    maintenanceDetails:{  
+    maintenanceDetails: {
       type: maintenanceDetailsSchema,
     },
     requestStatus: {
@@ -54,7 +54,7 @@ const requestSchema = new mongoose.Schema(
     timestamps: {
       createdAt: 'requestCreatedAt',
       updatedAt: 'requestModifiedAt',
-    },  
+    },
   }
 );
 

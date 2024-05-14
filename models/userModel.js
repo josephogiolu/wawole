@@ -73,7 +73,7 @@ const userSchema = new mongoose.Schema(
       // This Field was added by me
       type: String,
       min: 8,
-      max: 15
+      max: 15,
     },
     photo: {
       type: String,
@@ -112,12 +112,11 @@ const userSchema = new mongoose.Schema(
       type: String,
       trim: true,
     },
-    role: 
-      {
-        type: [String],
-        enum: ['user', 'tenant', 'landlord', 'agent', 'admin'],
-        default: 'user',
-      },
+    role: {
+      type: [String],
+      enum: ['user', 'tenant', 'landlord', 'agent', 'admin'],
+      default: 'user',
+    },
 
     dataQuality: {
       type: Number,
